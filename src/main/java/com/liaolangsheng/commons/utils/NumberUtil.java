@@ -1,5 +1,6 @@
 package com.liaolangsheng.commons.utils;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 public class NumberUtil {
@@ -57,7 +58,7 @@ public class NumberUtil {
 	/**
 	 * 格式化数字
 	 * @param number
-	 * @param pattern
+	 * @param pattern #.##
 	 * @return
 	 */
 	public static String format(Number number, String pattern) {
@@ -69,12 +70,22 @@ public class NumberUtil {
 	}
 	
 	/**
-	 * 格式化数字
+	 * 小数位四舍五入法保留指定位数
 	 * @param number
+	 * @param decimal
 	 * @return
 	 */
-	public static String format(Number number) {
-		String pattern = "#.##";
-		return format(number, pattern);
+	public static Double decimalRound(Double number, Integer decimal) {
+		return new BigDecimal(number).setScale(decimal, BigDecimal.ROUND_HALF_UP).doubleValue();
+	}
+	
+	/**
+	 * 小数位四舍五入法保留指定位数
+	 * @param number
+	 * @param decimal
+	 * @return
+	 */
+	public static Float decimalRound(Float number, Integer decimal) {
+		return new BigDecimal(number).setScale(decimal, BigDecimal.ROUND_HALF_UP).floatValue();
 	}
 }

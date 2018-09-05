@@ -6,6 +6,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
@@ -139,5 +140,41 @@ public class ObjectUtil {
 			e.printStackTrace();
 		}
 		return params;
+	}
+	
+	/**
+	 * 设置对象的属性值
+	 * @param object
+	 * @param fieldName
+	 * @param fieldValue
+	 */
+	public static boolean setField(Object object, String fieldName, Object fieldValue) {
+		try {
+			Field field = object.getClass().getDeclaredField(fieldName);
+			field.setAccessible(true);
+			field.set(object, fieldValue);
+			return true;
+		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	/**
+	 * 获取对象属性
+	 * @param object
+	 * @param fieldName
+	 * @param fieldValue
+	 * @return
+	 */
+	public Object getField(Object object, String fieldName) {
+		try {
+			Field field = object.getClass().getDeclaredField(fieldName);
+			field.setAccessible(true);
+			return field.get(object);
+		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }
