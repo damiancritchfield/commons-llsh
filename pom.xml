@@ -91,17 +91,26 @@
       <version>1.9.3</version>
     </dependency>
 
+	<!-- jdk1.7编译版本 -->
     <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-      <version>24.1-jre</version>
-    </dependency>
+	    <groupId>com.google.guava</groupId>
+	    <artifactId>guava</artifactId>
+	    <version>20.0</version>
+	</dependency>
 
     <dependency>
       <groupId>org.xhtmlrenderer</groupId>
       <artifactId>flying-saucer-pdf-itext5</artifactId>
       <version>9.1.12</version>
     </dependency>
+    
+    <!-- WordUtil start-->
+	<dependency>
+	    <groupId>org.docx4j</groupId>
+	    <artifactId>docx4j</artifactId>
+	    <version>6.0.1</version>
+	</dependency>
+    <!-- WordUtil end -->
   </dependencies>
 
   <build>
