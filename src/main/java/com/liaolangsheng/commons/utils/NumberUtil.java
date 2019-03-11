@@ -88,4 +88,14 @@ public class NumberUtil {
 	public static Float decimalRound(Float number, Integer decimal) {
 		return new BigDecimal(number).setScale(decimal, BigDecimal.ROUND_HALF_UP).floatValue();
 	}
+	
+	/**
+	 * 小数位四舍五入法保留指定位数
+	 * @param number
+	 * @param decimal
+	 * @return
+	 */
+	public static BigDecimal decimalRound(BigDecimal number, Integer decimal) {
+		return number.setScale(decimal, BigDecimal.ROUND_HALF_UP);
+	}
 }

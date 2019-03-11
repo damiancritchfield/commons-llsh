@@ -1,6 +1,7 @@
 package com.liaolangsheng.commons.utils;
 
 import java.io.StringWriter;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
@@ -23,7 +24,7 @@ public class TextGenerator {
 
 		String[] templatePaths = templatePath.split("/");
 		String templateName = templatePaths[templatePaths.length - 1];
-
+		
 		Template template = Velocity.getTemplate(templateName);
 		VelocityContext context = toVelocityContext(replacements);
 		StringWriter writer = new StringWriter();
@@ -41,5 +42,22 @@ public class TextGenerator {
 			context.put(key, replacements.get(key));
 		}
 		return context;
+	}
+	
+	/**
+	 * 字符串模板
+	 */
+	public static String merge(String templateContent, Map<String, Object> replacements) {
+		Properties p = new Properties();
+		p.setProperty(VelocityEngine.INPUT_ENCODING, "UTF-8");
+		p.setProperty(VelocityEngine.OUTPUT_ENCODING, "UTF-8");
+		// 初始化并取得Velocity引擎
+		VelocityEngine engine = new VelocityEngine(p);
+
+		// 取得velocity的上下文context
+		VelocityContext context = toVelocityContext(replacements);
+		StringWriter writer = new StringWriter();
+		engine.evaluate(context, writer, "", templateContent);
+		return writer.toString();
 	}
 }
