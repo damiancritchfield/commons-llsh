@@ -30,7 +30,24 @@ public class VelocityUtil {
 		template.merge(context, writer);
 		return writer.toString();
 	}
-	
+
+	/**
+	 * 字符串模板
+	 */
+	public static String merge(String templateContent, Map<String, Object> replacements) {
+		Properties p = new Properties();
+		p.setProperty(VelocityEngine.INPUT_ENCODING, "UTF-8");
+		p.setProperty(VelocityEngine.OUTPUT_ENCODING, "UTF-8");
+		// 初始化并取得Velocity引擎
+		VelocityEngine engine = new VelocityEngine(p);
+
+		// 取得velocity的上下文context
+		VelocityContext context = toVelocityContext(replacements);
+		StringWriter writer = new StringWriter();
+		engine.evaluate(context, writer, "", templateContent);
+		return writer.toString();
+	}
+
 	private static VelocityContext toVelocityContext(Map<String, Object> replacements){
 		if(null == replacements){
 			return null;
