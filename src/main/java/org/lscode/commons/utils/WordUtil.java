@@ -1,4 +1,4 @@
-package com.liaolangsheng.commons.utils;
+package org.lscode.commons.utils;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

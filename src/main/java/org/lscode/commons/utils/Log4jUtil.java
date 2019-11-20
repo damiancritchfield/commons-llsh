@@ -1,4 +1,4 @@
-package com.liaolangsheng.commons.utils;
+package org.lscode.commons.utils;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
