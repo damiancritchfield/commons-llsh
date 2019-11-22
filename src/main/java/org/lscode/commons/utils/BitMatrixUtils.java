@@ -15,18 +15,18 @@ import com.google.zxing.common.BitMatrix;
  *
  * 2017年6月22日上午11:01:59
  */
-public final class BitMatrixUtil {
+public final class BitMatrixUtils {
 
 	private static final int BLACK = 0xFF000000;
 	private static final int WHITE = 0xFFFFFFFF;
 
-	private BitMatrixUtil() {
+	private BitMatrixUtils() {
 	}
 
 	/**
 	 * 位图矩阵转换为图像缓冲区
-	 * @param matrix
-	 * @return
+	 * @param matrix 矩阵
+	 * @return BufferedImage
 	 */
 	public static BufferedImage bitMatrixToBufferedImage(BitMatrix matrix) {
 		int width = matrix.getWidth();
@@ -42,10 +42,10 @@ public final class BitMatrixUtil {
 
 	/**
 	 * 写位图矩阵到图片文件
-	 * @param matrix
-	 * @param format
-	 * @param file
-	 * @throws IOException
+	 * @param matrix 矩阵
+	 * @param format 格式串
+	 * @param file 文件
+	 * @throws IOException 输入输出异常
 	 */
 	public static void writeToFile(BitMatrix matrix, String format, File file) throws IOException {
 		BufferedImage image = bitMatrixToBufferedImage(matrix);
@@ -56,10 +56,10 @@ public final class BitMatrixUtil {
 
 	/**
 	 * 写位图矩阵到输出流
-	 * @param matrix
-	 * @param format
-	 * @param stream
-	 * @throws IOException
+	 * @param matrix 位图矩阵
+	 * @param format 位图格式
+	 * @param stream 输出流
+	 * @throws IOException IO异常
 	 */
 	public static void writeToStream(BitMatrix matrix, String format, OutputStream stream) throws IOException {
 		BufferedImage image = bitMatrixToBufferedImage(matrix);

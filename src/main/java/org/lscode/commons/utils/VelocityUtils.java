@@ -10,8 +10,14 @@ import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 import org.apache.velocity.app.VelocityEngine;
 
-public class VelocityUtil {
+public class VelocityUtils {
 
+	/**
+	 * 根据模板路径获取模板生成字符串
+	 * @param templatePath 模板路径
+	 * @param replacements 待替换集合
+	 * @return 生成的字符串
+	 */
 	public static String generate(String templatePath, Map<String, Object> replacements) {
 		Properties p = new Properties();
 		p.setProperty(VelocityEngine.INPUT_ENCODING, "UTF-8");
@@ -32,7 +38,10 @@ public class VelocityUtil {
 	}
 
 	/**
-	 * 字符串模板
+	 * 生成字符串
+	 * @param templateContent 模板内容
+	 * @param replacements 待替换对象集合
+	 * @return 替换后的字符串
 	 */
 	public static String merge(String templateContent, Map<String, Object> replacements) {
 		Properties p = new Properties();

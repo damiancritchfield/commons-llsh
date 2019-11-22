@@ -13,13 +13,13 @@ import org.apache.commons.lang.StringUtils;
  * @author liaol
  *
  */
-public class RegexUtil {
+public class RegexUtils {
 	
 	/**
 	 * 获取所有正则表达式匹配的字符串
-	 * @param content
-	 * @param regex
-	 * @return
+	 * @param content 内容
+	 * @param regex 正则表达式
+	 * @return 所有匹配的字符串
 	 */
 	public static List<String> getMatchingString(String content, String regex){
 		if(StringUtils.isBlank(content) || StringUtils.isBlank(regex)) {
@@ -37,9 +37,9 @@ public class RegexUtil {
 	
 	/**
 	 * 判断字符串是否匹配正则表达式
-	 * @param regex
-	 * @param str
-	 * @return
+	 * @param regex 正则表达式
+	 * @param str 待匹配的字符串
+	 * @return 是否匹配
 	 */
 	public static boolean match(String regex, String str) {
 		Pattern pattern = Pattern.compile(regex);
@@ -50,8 +50,8 @@ public class RegexUtil {
 	/**
 	 * 判断是否是文件或目录的绝对路径
 	 * windows、liunx
-	 * @param str
-	 * @return
+	 * @param str 字符串
+	 * @return 是否是文件或目录的绝对路径
 	 */
 	public static boolean isPath(String str) {
 		String windowsRegex = "(?i)([a-z]\\:([\\\\/][^\\\\/]+)+)";
@@ -61,8 +61,8 @@ public class RegexUtil {
 	
 	/**
 	 * 获取路径最后一段
-	 * @param path
-	 * @return
+	 * @param path 路径
+	 * @return 路径最后一个字符串
 	 */
 	public static String getPathCaudal(String path) {
 		String regex = "[^(/|\\\\\\\\)]+";

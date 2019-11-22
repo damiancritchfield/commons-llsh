@@ -22,29 +22,15 @@ import org.docx4j.wml.ObjectFactory;
 import org.docx4j.wml.P;
 import org.docx4j.wml.R;
 
-public class WordUtil {
+public class WordUtils {
 
-	// 模板文件路径
-	private static String templatePath = "F://my_workspace/custReportTemlpate.docx";
-	// 生成的文件路径
-	private static String targetPath = "F://my_workspace/target.docx";
-	// 书签名
-	private static String bookmarkName = "bookmark";
-	// 图片路径
-	private static String imagePath = "F://my_temp/33.png";
-
-	public static void main(String[] args) throws Exception {
-
-		Map<String, byte[]> replacement = new HashMap<String, byte[]>();
-
-		InputStream is = new FileInputStream(imagePath);
-		byte[] bytes = IOUtils.toByteArray(is);
-		is.close();
-		replacement.put(bookmarkName, bytes);
-
-		insertImgs(templatePath, targetPath, replacement);
-	}
-
+	/**
+	 * 插入图片
+	 * @param infilePath 输入文件路径
+	 * @param outfilePath 输出文件路径
+	 * @param replacement 待插入的图片内容
+	 * @throws Exception 异常
+	 */
 	public static void insertImgs(String infilePath, String outfilePath, Map<String, byte[]> replacement)
 			throws Exception {
 		// 载入模板文件
@@ -67,6 +53,14 @@ public class WordUtil {
 		wPackage.save(new FileOutputStream(outfilePath));
 	}
 
+	/**
+	 * 插入图片
+	 * @param wordMLPackage wordMLPackage
+	 * @param bms CTBookmark集合
+	 * @param bookmarkName bookmarkName
+	 * @param bytes 图片字节
+	 * @throws Exception 异常
+	 */
 	public static void insertImg(WordprocessingMLPackage wordMLPackage, List<CTBookmark> bms, String bookmarkName,
 			byte[] bytes) throws Exception {
 		// 遍历书签

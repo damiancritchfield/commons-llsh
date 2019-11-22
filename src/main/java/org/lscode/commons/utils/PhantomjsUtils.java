@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class PhantomjsUtil {
+public class PhantomjsUtils {
 
 	/**
 	 * phantomjs路径
@@ -20,14 +20,15 @@ public class PhantomjsUtil {
 	
 	/**
 	 * html转换为多页pdf文件
-	 * @param url
+	 * @param url 资源路径
+	 * @return pdf文件路径
 	 */
 	public static String htmlToMultiPagePdf(String url) {
 		
 		List<String> command = new ArrayList<String>();
 
-		String phantomjs = FileUtil.getFilePathInClassPath(PHANTOMJS_PATH).substring(1);
-		String js = FileUtil.getFilePathInClassPath(PHANTOMJS_SCRIPT_DIR_PATH + "/toMultiPagePdf.js").substring(1);
+		String phantomjs = FileUtils.getFilePathInClassPath(PHANTOMJS_PATH).substring(1);
+		String js = FileUtils.getFilePathInClassPath(PHANTOMJS_SCRIPT_DIR_PATH + "/toMultiPagePdf.js").substring(1);
 
 		command.add(phantomjs);
 		command.add(js);
@@ -36,15 +37,10 @@ public class PhantomjsUtil {
 		String fileName = PHANTOMJS_WORKSPACE + "/" + UUID.randomUUID() + ".pdf";
 		command.add(fileName);
 		
-		String res = WindowsUtil.cmdWaitFor(command);
+		String res = WindowsUtils.cmdWaitFor(command);
 		
 		System.out.println(res);
 		
 		return fileName;
-	}
-	
-	public static void main(String[] args) {
-		String path = PhantomjsUtil.htmlToMultiPagePdf("http://120.25.59.77/eSaleConsole/portals/login/login.jsp");
-		System.out.println(path);
 	}
 }

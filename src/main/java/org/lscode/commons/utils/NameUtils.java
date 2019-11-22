@@ -12,8 +12,8 @@ public class NameUtils {
 	
 	/**
 	 * 下划线名称转换为驼峰短类名，首字母大写
-	 * @param lineName
-	 * @return
+	 * @param lineName 下划线名称
+	 * @return 短类名
 	 */
 	public static String toShortClassName(String lineName){
 		String humpName = lineNameToHumpName(lineName);
@@ -22,8 +22,8 @@ public class NameUtils {
 	
 	/**
 	 * 首字母大写
-	 * @param name
-	 * @return
+	 * @param name 字符串
+	 * @return 返回首字母大写后的字符串
 	 */
 	public static String upperFirstLetter(String name){
 		if(StringUtils.isBlank(name)){
@@ -35,8 +35,8 @@ public class NameUtils {
 	
 	/**
 	 * 首字母小写
-	 * @param name
-	 * @return
+	 * @param name 字符串
+	 * @return 首字母小写后的字符串
 	 */
 	public static String lowerFirstLetter(String name){
 		if(StringUtils.isBlank(name)){
@@ -48,8 +48,8 @@ public class NameUtils {
 	
 	/**
 	 * 下划线命名转驼峰命名，首字母小写
-	 * @param lineName
-	 * @return
+	 * @param lineName 下划线命名名称
+	 * @return 返回驼峰命名
 	 */
 	public static String lineNameToHumpName(String lineName) {
 		if(StringUtils.isBlank(lineName)) {
@@ -68,19 +68,18 @@ public class NameUtils {
 	
 	/**
 	 * 转换为短类名，不包含包路径
-	 * @param longClassName
-	 * @return
+	 * @param longClassName 长类名转换为短类名
+	 * @return 短类名
 	 */
 	public static String longClassNameToShortClassName(String longClassName){
 		String[] name = longClassName.split("[.]");
-		String shortClassName = name[name.length-1];
-		return shortClassName;
+		return name[name.length-1];
 	}
 	
 	/**
 	 * 去除下划线前缀
-	 * @param lineName
-	 * @return
+	 * @param lineName 下滑线名称
+	 * @return 去除下划线前缀后的名称
 	 */
 	public static String dislodgePrefix(String lineName) {
 		return lineName.replaceFirst("^[a-zA-Z]{1}_", "");

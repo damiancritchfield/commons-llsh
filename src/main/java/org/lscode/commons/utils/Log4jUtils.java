@@ -9,7 +9,7 @@ import org.apache.log4j.PropertyConfigurator;
 * @version 创建时间：2017年11月9日 下午5:40:52
 * 
 */
-public class Log4jUtil {
+public class Log4jUtils {
 	
 	/**
 	 * 默认配置文件
@@ -19,8 +19,8 @@ public class Log4jUtil {
 	
 	/**
 	 * 获取logger，使用本地默认配置文件
-	 * @param clazz
-	 * @return
+	 * @param clazz 类型
+	 * @return 日志对象
 	 */
 	@SuppressWarnings("rawtypes")
 	public static Logger getLogger(Class clazz) {
@@ -34,15 +34,16 @@ public class Log4jUtil {
 	
 	/**
 	 * 获取logger对象
-	 * @param clazz
-	 * @return
+	 * @param clazz 类型
+	 * @param propertiesPath 设置属性的配置文件路径
+	 * @return 日志对象
 	 */
 	@SuppressWarnings("rawtypes")
 	public static Logger getLogger(Class clazz, String propertiesPath) {
 		
-		String properties = StringUtils.isBlank(propertiesPath) ? FileUtil.getFilePathInClassPath(DEFAULT_PROPERTIES_PATH) : propertiesPath;
+		String properties = StringUtils.isBlank(propertiesPath) ? FileUtils.getFilePathInClassPath(DEFAULT_PROPERTIES_PATH) : propertiesPath;
 		
-		if(!FileUtil.exists(properties)) {
+		if(!FileUtils.exists(properties)) {
 			properties = DEFAULT_PROPERTIES_PATH;
 		}
 		

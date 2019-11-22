@@ -12,7 +12,7 @@ import org.apache.commons.lang.StringUtils;
  * @author llsh
  * 日期时间工具类
  */
-public class CommonDateUtil {
+public class CommonDateUtils {
 	/**
 	 * 日期格式，例如：2017-05-05
 	 */
@@ -30,9 +30,9 @@ public class CommonDateUtil {
 	
 	/**
 	 * 字符串生成日期
-	 * @param date
+	 * @param date 日期字符串
 	 * @param pattern 默认为yyyy-MM-dd HH:mm:ss
-	 * @return
+	 * @return 日期对象
 	 */
 	public static Date parse(String date, String pattern){
 		if(StringUtils.isBlank(date)){
@@ -52,9 +52,9 @@ public class CommonDateUtil {
 	
 	/**
 	 * 格式化日期
-	 * @param date
-	 * @param pattern
-	 * @return
+	 * @param date 日期对象
+	 * @param pattern 格式化串
+	 * @return 日期字符串
 	 */
 	public static String format(Date date, String pattern){
 		if(date == null){
@@ -70,9 +70,9 @@ public class CommonDateUtil {
 	
 	/**
 	 * 获取日期字段
-	 * @param date
-	 * @param field
-	 * @return
+	 * @param date 日期对象
+	 * @param field 日期对象字段
+	 * @return 字段值
 	 */
 	public static int getField(Date date, int field){
 		Calendar cal = Calendar.getInstance();
@@ -82,9 +82,10 @@ public class CommonDateUtil {
 	
 	/**
 	 * 设置日期字段
-	 * @param date
-	 * @param field
-	 * @return
+	 * @param date 日期对象
+	 * @param field 日期字段
+	 * @param value 值
+	 * @return 日期对象
 	 */
 	public static Date setField(Date date, int field, int value){
 		Calendar cal = Calendar.getInstance();
@@ -95,10 +96,10 @@ public class CommonDateUtil {
 	
 	/**
 	 * Date指定字段加减
-	 * @param date
-	 * @param field
-	 * @param amount
-	 * @return
+	 * @param date 日期对象
+	 * @param field 日期对象字段
+	 * @param amount 增加的数值
+	 * @return 日期对象
 	 */
 	public static Date add(Date date, int field, int amount) {
 		Calendar cal = Calendar.getInstance();
@@ -109,8 +110,8 @@ public class CommonDateUtil {
 	
 	/**
 	 * 通过Date获取Calendar
-	 * @param date
-	 * @return
+	 * @param date 日期对象
+	 * @return 日历对象
 	 */
 	public static Calendar getCalendarByDate(Date date) {
 		Calendar cal = Calendar.getInstance();
@@ -120,7 +121,7 @@ public class CommonDateUtil {
 	
 	/**
 	 * 获得今天日期：只包括年月日
-	 * @return
+	 * @return 日期对象
 	 */
 	public static Date getDateWithToday(){
 		String dateString = format(new Date(), DATE_PATTERN);
@@ -129,7 +130,7 @@ public class CommonDateUtil {
 	
 	/**
 	 * 获取当前日期的yyyy-MM-01格式的Date
-	 * @return
+	 * @return 日期对象
 	 */
 	public static Date getDateMonthWithToday() {
 		Date date = new Date();
@@ -141,8 +142,8 @@ public class CommonDateUtil {
 	/**
 	 * 以今日为起点，获取距离当前时间指定天数的日期。
 	 * <p>如：今日是2017-05-05时，day=1返回2017-05-06 00:00:00，day=-1返回2017-05-04 00:00:00</p>
-	 * @param day
-	 * @return
+	 * @param day 天数
+	 * @return 日期对象
 	 */
 	public static Date getDateBeginWithToday(int day){
 		Date today = getDateWithToday();
@@ -151,8 +152,9 @@ public class CommonDateUtil {
 	
 	/**
 	 * 以今日为起点，获取距离当前时间指定月数的日期。
+	 * @param month 月数
 	 * <p>如：今日是2017-05-05时，month=1返回2017-06-05 00:00:00，month=-1返回2017-04-05 00:00:00</p>
-	 * @return
+	 * @return 日期对象
 	 */
 	public static Date getDateMonthBeginWithToday(int month){
 		Date today = getDateWithToday();
@@ -161,7 +163,7 @@ public class CommonDateUtil {
 	
 	/**
 	 * 获取昨天：只包括年月日
-	 * @return
+	 * @return 日期对象
 	 */
 	public static Date getDateWithYesterday(){
 		return getDateBeginWithToday(-1);
@@ -169,7 +171,7 @@ public class CommonDateUtil {
 	
 	/**
 	 * 获取明天：只包括年月日
-	 * @return
+	 * @return 日期对象
 	 */
 	public static Date getDateWithTomorrow(){
 		return getDateBeginWithToday(1);
@@ -177,7 +179,7 @@ public class CommonDateUtil {
 	
 	/**
 	 * 获得今天日期的时间戳：只包括年月日
-	 * @return
+	 * @return 时间戳
 	 */
 	public static long getDateStampWithToday(){
 		Date today= getDateWithToday();
@@ -188,8 +190,8 @@ public class CommonDateUtil {
 	
 	/**
 	 * 格式化日期时间 yyyy-MM-dd hh:mm:ss
-	 * @param date
-	 * @return
+	 * @param date 日期对象
+	 * @return 格式化后的日期时间字符串
 	 */
 	public static String dateTimeFormat(Date date){
 		return format(date, DATE_TIME_PATTERN);
@@ -197,8 +199,8 @@ public class CommonDateUtil {
 	
 	/**
 	 * 格式化日期 yyyy-MM-dd
-	 * @param date
-	 * @return
+	 * @param date 日期对象
+	 * @return 格式化后的日期字符串
 	 */
 	public static String dateFormat(Date date){
 		return format(date, DATE_PATTERN);
@@ -206,8 +208,8 @@ public class CommonDateUtil {
 	
 	/**
 	 * 格式化日期 yyyy-MM
-	 * @param date
-	 * @return
+	 * @param date 日期对象
+	 * @return 年月字符串
 	 */
 	public static String dateMonthFormat(Date date){
 		return format(date, DATE_MONTH_PATTERN);
@@ -215,8 +217,8 @@ public class CommonDateUtil {
 	
 	/**
 	 * 字符串生成日期时间 yyyy-MM-dd hh:mm:ss
-	 * @param date
-	 * @return
+	 * @param date 日期字符串
+	 * @return 日期对象
 	 */
 	public static Date dateTimeParse(String date){
 		return parse(date, DATE_TIME_PATTERN);
@@ -224,8 +226,8 @@ public class CommonDateUtil {
 	
 	/**
 	 * 字符串生成日期 yyyy-MM-dd
-	 * @param date
-	 * @return
+	 * @param date 日期字符串
+	 * @return 日期对象
 	 */
 	public static Date dateParse(String date){
 		return parse(date, DATE_PATTERN);
@@ -233,8 +235,8 @@ public class CommonDateUtil {
 	
 	/**
 	 * 字符串生成日期月 yyyy-MM
-	 * @param date
-	 * @return
+	 * @param date 日期字符串
+	 * @return 年月日期对象
 	 */
 	public static Date dateMonthParse(String date){
 		return parse(date, DATE_MONTH_PATTERN);
@@ -242,10 +244,10 @@ public class CommonDateUtil {
 	
 	/**
 	 * 指定时间是否在两个时间参数区间内，包括临界点
-	 * @param date
-	 * @param startDateTime
-	 * @param stopDateTime
-	 * @return
+	 * @param date 需要比较的日期对象
+	 * @param startDateTime 开始日期对象
+	 * @param stopDateTime 结束日期对象
+	 * @return 返回是否在闭区间内
 	 */
 	public static boolean isDateBetween(Date date, Date startDateTime, Date stopDateTime){
 		if(startDateTime == null && stopDateTime == null){
@@ -272,9 +274,9 @@ public class CommonDateUtil {
 	
 	/**
 	 * 当前时间是否在两个时间参数区间内，包括临界点
-	 * @param startDateTime
-	 * @param stopDateTime
-	 * @return
+	 * @param startDateTime 开始日期对象
+	 * @param stopDateTime 截止日期对象
+	 * @return 返回是否在闭区间内
 	 */
 	public static boolean isNowBetween(Date startDateTime, Date stopDateTime){
 		return isDateBetween(getDateWithToday(), startDateTime, stopDateTime);
@@ -282,8 +284,8 @@ public class CommonDateUtil {
 	
 	/**
 	 * 获取年份
-	 * @param date
-	 * @return
+	 * @param date 日期对象
+	 * @return 年份
 	 */
 	public static int getYear(Date date){
 		if(date == null){
@@ -294,8 +296,8 @@ public class CommonDateUtil {
 	
 	/**
 	 * 获取月份
-	 * @param date
-	 * @return
+	 * @param date 日期对象
+	 * @return 月份
 	 */
 	public static int getMonth(Date date){
 		if(date == null){
@@ -306,8 +308,8 @@ public class CommonDateUtil {
 	
 	/**
 	 * 获取日
-	 * @param date
-	 * @return
+	 * @param date 日期对象
+	 * @return 返回某时间的日
 	 */
 	public static int getDay(Date date){
 		if(date == null){
@@ -318,7 +320,8 @@ public class CommonDateUtil {
 	
 	/**
 	 * 返回某个月份的最后一天
-	 * @param date
+	 * @param date 日期对象
+	 * @return 获取返回日期对象同一个月的最后一天
 	 */
 	public static Date getLastDateOfMonth(Date date){
 		Calendar cal = getCalendarByDate(date);
@@ -329,25 +332,10 @@ public class CommonDateUtil {
 	
 	/**
 	 * 获取date所在月份最大天数
-	 * @param date
-	 * @return
+	 * @param date 日期对象
+	 * @return 获取日期对象的最大天数
 	 */
 	public static int getLastDayOfMonth(Date date){
         return getDay(getLastDateOfMonth(date));
-	}
-	
-	public static void main(String[] args) {
-		
-		Date date = CommonDateUtil.dateParse("2017-12-30");
-		System.out.println(CommonDateUtil.getYear(date));
-		System.out.println(CommonDateUtil.getMonth(date));
-		System.out.println(CommonDateUtil.getDay(date));
-		System.out.println(CommonDateUtil.getYear(null));
-		System.out.println(CommonDateUtil.getMonth(null));
-		System.out.println(CommonDateUtil.getDay(null));
-		Date date2 = CommonDateUtil.parse("2017-05-23", "yyyy-MM-dd");
-		System.out.println(date2);
-		String dateStr = CommonDateUtil.format(date2, "yyyy-MM-dd 0505");
-		System.out.println(dateStr);
 	}
 }

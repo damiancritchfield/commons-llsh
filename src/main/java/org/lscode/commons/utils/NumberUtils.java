@@ -3,12 +3,12 @@ package org.lscode.commons.utils;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
-public class NumberUtil {
+public class NumberUtils {
 	
 	/**
 	 * 对比所有数字是否互相相等
-	 * @param number
-	 * @return
+	 * @param number 数字
+	 * @return true相等，false至少有一对不相等
 	 */
 	public static boolean equal(Number ...number) {
 		for (Number num : number) {
@@ -21,9 +21,9 @@ public class NumberUtil {
 	
 	/**
 	 * 对比Number是否与数组中的每一个数字相等
-	 * @param numbers
-	 * @param number
-	 * @return
+	 * @param numbers 数字数组
+	 * @param number 数字
+	 * @return 数字是否与数字数组全部元素相等
 	 */
 	public static boolean equalNumberArray(Number[] numbers, Number number) {
 		for (Number num : numbers) {
@@ -45,8 +45,8 @@ public class NumberUtil {
 	
 	/**
 	 * 判断数字是否是空或者0
-	 * @param num
-	 * @return
+	 * @param number 数字
+	 * @return 数字是否为0
 	 */
 	public static boolean nullOrZero(Number number) {
 		if(number == null || number.doubleValue()==0) {
@@ -57,9 +57,9 @@ public class NumberUtil {
 	
 	/**
 	 * 格式化数字
-	 * @param number
+	 * @param number 数字
 	 * @param pattern #.##
-	 * @return
+	 * @return 返回格式化后的数字字符串
 	 */
 	public static String format(Number number, String pattern) {
 		if(number == null) {
@@ -71,29 +71,29 @@ public class NumberUtil {
 	
 	/**
 	 * 小数位四舍五入法保留指定位数
-	 * @param number
-	 * @param decimal
-	 * @return
+	 * @param number 数字
+	 * @param decimal 保留小数位数
+	 * @return 保留指定小数位数后的数字
 	 */
 	public static Double decimalRound(Double number, Integer decimal) {
 		return new BigDecimal(number).setScale(decimal, BigDecimal.ROUND_HALF_UP).doubleValue();
 	}
-	
+
 	/**
 	 * 小数位四舍五入法保留指定位数
-	 * @param number
-	 * @param decimal
-	 * @return
+	 * @param number 数字
+	 * @param decimal 保留小数位数
+	 * @return 保留指定小数位数后的数字
 	 */
 	public static Float decimalRound(Float number, Integer decimal) {
 		return new BigDecimal(number).setScale(decimal, BigDecimal.ROUND_HALF_UP).floatValue();
 	}
-	
+
 	/**
 	 * 小数位四舍五入法保留指定位数
-	 * @param number
-	 * @param decimal
-	 * @return
+	 * @param number 数字
+	 * @param decimal 保留小数位数
+	 * @return 保留指定小数位数后的数字
 	 */
 	public static BigDecimal decimalRound(BigDecimal number, Integer decimal) {
 		return number.setScale(decimal, BigDecimal.ROUND_HALF_UP);

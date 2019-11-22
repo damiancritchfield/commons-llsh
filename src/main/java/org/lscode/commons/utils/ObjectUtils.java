@@ -14,12 +14,12 @@ import java.util.Map;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtilsBean;
 
-public class ObjectUtil {
+public class ObjectUtils {
 	
 	/**
 	 * 序列化对象为字符串
-	 * @param object
-	 * @return
+	 * @param object 对象
+	 * @return 序列化字符串
 	 */
 	public static String serializeToString(Object object) {
 		// 此类实现了一个输出流，其中的数据被写入一个 byte 数组。
@@ -47,9 +47,10 @@ public class ObjectUtil {
 	
 	/**
 	 * 反序列化字符串为对象
-	 * @param serializeStr
-	 * @param clazz
-	 * @return
+	 * @param serializeStr 序列化字符串
+	 * @param clazz 类
+	 * @param <T> 返回类型
+	 * @return 反序列化后的对象
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> T deserialize(String serializeStr, Class<T> clazz) {
@@ -81,10 +82,10 @@ public class ObjectUtil {
 	
 	/**
 	 * Map转换层Bean
-	 * @param <T>
-	 * @param map
-	 * @param clazz
-	 * @return
+	 * @param <T> 返回对象类型
+	 * @param map 属性集合
+	 * @param clazz 类型
+	 * @return 返回指定类型的对象，并将属性集合的内容设置到对象属性中
 	 */
 	@SuppressWarnings("hiding")
 	public static <T> T mapToBean(Map<String, Object> map, Class<T> clazz) {
@@ -103,9 +104,9 @@ public class ObjectUtil {
 	}
 	
 	/**
-	 * 将bean所有属性转换为Map<String,String>，对于一些自定义类型属性，会转成xxkey=llsh.common.model.Novel@3675463
-	 * @param object
-	 * @return
+	 * 将bean所有属性转换为Map字符串，对于一些自定义类型属性，会转成xxkey=llsh.common.model.Novel@3675463
+	 * @param object 对象
+	 * @return 返回对象所有属性转换为的map集合
 	 */
 	public static Map<String, String> beanToMapString(Object object){
 		try {
@@ -121,9 +122,9 @@ public class ObjectUtil {
 	}
 	
 	/**
-	 * javabean的所有属性转换为Map<String, Object>形式
-	 * @param obj
-	 * @return
+	 * javabean的所有属性转换为Map对象形式
+	 * @param obj 对象
+	 * @return 返回对象所有属性转换为的map集合
 	 */
 	public static Map<String, Object> beanToMap(Object obj) {
 		Map<String, Object> params = new HashMap<String, Object>(0);
@@ -144,9 +145,10 @@ public class ObjectUtil {
 	
 	/**
 	 * 设置对象的属性值
-	 * @param object
-	 * @param fieldName
-	 * @param fieldValue
+	 * @param object 对象
+	 * @param fieldName 属性名
+	 * @param fieldValue 属性值
+	 * @return 是否成功
 	 */
 	public static boolean setField(Object object, String fieldName, Object fieldValue) {
 		try {
@@ -162,10 +164,9 @@ public class ObjectUtil {
 	
 	/**
 	 * 获取对象属性
-	 * @param object
-	 * @param fieldName
-	 * @param fieldValue
-	 * @return
+	 * @param object 对象
+	 * @param fieldName 属性名
+	 * @return 属性值
 	 */
 	public Object getField(Object object, String fieldName) {
 		try {

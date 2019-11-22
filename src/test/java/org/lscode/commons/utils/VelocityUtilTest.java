@@ -12,7 +12,7 @@ public class VelocityUtilTest {
         Map<String, Object> map = new HashMap<>();
         map.put("name","刘德华");
         map.put("say",100);
-        String str = VelocityUtil.generate(FileUtil.getFilePathInClassPath("template/hello.vm"), map);
+        String str = VelocityUtils.generate(FileUtils.getFilePathInClassPath("template/hello.vm"), map);
         System.out.println(str);
     }
 }

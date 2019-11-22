@@ -5,12 +5,12 @@ import java.util.List;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 
-public class FfmpegUtil {
+public class FfmpegUtils {
 
 	/**
 	 * 获得视频完整描述
-	 * @param filepath
-	 * @return
+	 * @param filepath 文件路径
+	 * @return 返回视频完整描述
 	 */
 	public static String getVideoDescribe(String filepath) {
 		List<String> command = new java.util.ArrayList<String>();
@@ -18,13 +18,13 @@ public class FfmpegUtil {
 		command.add("-i");
 		command.add(filepath);
 		
-		return WindowsUtil.cmdWaitFor(command);
+		return WindowsUtils.cmdWaitFor(command);
 	}
 	
 	/**
 	 * 获得视频总长度，格式：时:分:秒.毫秒
-	 * @param filepath
-	 * @return
+	 * @param filepath 获取视频时长
+	 * @return 返回视频时长格式：时:分:秒.毫秒
 	 */
 	public static String getVideoDurationString(String filepath){
 		
@@ -35,13 +35,13 @@ public class FfmpegUtil {
 		String result = getVideoDescribe(filepath);
 
 		String regexDuration = "Duration: (.*?), start: (.*?), bitrate: (\\d*) kb\\/s";
-		List<String> list = RegexUtil.getMatchingString(result, regexDuration);
+		List<String> list = RegexUtils.getMatchingString(result, regexDuration);
 		if(CollectionUtils.isEmpty(list)){
 			return null;
 		}
 		
 		String regexTime = "[0-9]*:[0-9]*:[0-9]*.[0-9]*";
-		list = RegexUtil.getMatchingString(list.get(0), regexTime);
+		list = RegexUtils.getMatchingString(list.get(0), regexTime);
 		if(CollectionUtils.isEmpty(list)){
 			return null;
 		}

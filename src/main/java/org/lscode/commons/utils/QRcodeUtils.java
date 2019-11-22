@@ -17,7 +17,7 @@ import com.google.zxing.common.BitMatrix;
  *
  * 2017年6月22日下午5:18:59
  */
-public class QRcodeUtil {
+public class QRcodeUtils {
 	
 	/**
 	 * 生成二维码保存到文件，输出.png格式，如果文件存在会覆盖文件
@@ -29,6 +29,7 @@ public class QRcodeUtil {
 	 * 输出图片宽度
 	 * @param height
 	 * 输出图片高度
+	 * @return 生成的二维码文件路径
 	 */
 	public static String generateQRcode(String text, String fileName, int width, int height){
 		
@@ -60,12 +61,12 @@ public class QRcodeUtil {
         			file = new File(file, UUID.randomUUID().toString()+".png");
         		}else {
         			if(!StringUtils.endsWith(fileName, ".png")) {
-        				file = new File(file.getParentFile(), RegexUtil.getPathCaudal(fileName)+".png");
+        				file = new File(file.getParentFile(), RegexUtils.getPathCaudal(fileName)+".png");
         			}
         		}
         	}
         	
-        	BitMatrixUtil.writeToFile(bitMatrix, format, file);
+        	BitMatrixUtils.writeToFile(bitMatrix, format, file);
         	return file.getAbsolutePath();
 		} catch (Exception e) {
 			e.printStackTrace();

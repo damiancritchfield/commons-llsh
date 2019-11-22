@@ -6,11 +6,11 @@ import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
 
-public class WindowsUtil {
+public class WindowsUtils {
 
 	/**
 	 * 执行外部命令，等待外部名字执行完毕再返回
-	 * @param command
+	 * @param command 命令集合
 	 * @return
 	 * 返回执行结果
 	 */

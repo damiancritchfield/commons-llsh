@@ -2,11 +2,11 @@ package org.lscode.commons.utils;
 
 import org.junit.Test;
 
-public class FileUtilTest {
+public class FileUtilsTest {
 
     @Test
     public void getFilePathInClassPath(){
-        String filepath = FileUtil.getFilePathInClassPath("config/log4j.properties");
+        String filepath = FileUtils.getFilePathInClassPath("config/log4j.properties");
         System.out.println(filepath);
     }
 }

@@ -7,7 +7,7 @@ public class Log4jUtilTest {
 
     @Test
     public void getLogger(){
-        Logger logger = Log4jUtil.getLogger(Log4jUtilTest.class);
+        Logger logger = Log4jUtils.getLogger(Log4jUtilTest.class);
         logger.info("测试日志输出");
     }
 }

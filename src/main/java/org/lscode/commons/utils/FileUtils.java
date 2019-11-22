@@ -10,11 +10,11 @@ import java.net.URISyntaxException;
  * @author llsh
  * 
  */
-public class FileUtil {
+public class FileUtils {
 	
 	/**
 	 * 获取当前目录，File类型
-	 * @return
+	 * @return 返回当前目录
 	 */
 	public static File getCurrentDirFile() {
 		File directory = new File(".");
@@ -28,7 +28,7 @@ public class FileUtil {
 	
 	/**
 	 * 获取当前目录，字符串类型
-	 * @return
+	 * @return 返回当前目录路径
 	 */
 	public static String getCurrentDirPath() {
 		File directory = new File(".");
@@ -47,6 +47,8 @@ public class FileUtil {
 	 *            路径
 	 * @param str
 	 *            内容
+	 * @param append
+	 * 是否追加
 	 */
 	public static void write(String path, String str, boolean append) {
 		try {
@@ -81,7 +83,7 @@ public class FileUtil {
 	
 	/**
 	 * 递归删除文件或目录，包括本目录
-	 * @param path
+	 * @param path 文件或目录路径
 	 */
 	public static void deleteFile(String path){
 		File file = new File(path);
@@ -90,7 +92,7 @@ public class FileUtil {
 	
 	/**
 	 * 递归删除文件或目录，包括本目录
-	 * @param file
+	 * @param file 文件或目录
 	 */
 	public static void deleteFile(File file) {
 		if (file.isDirectory()) {
@@ -104,7 +106,7 @@ public class FileUtil {
 	
 	/**
 	 * 清空目录下所有文件，不删除本目录
-	 * @param dirPath
+	 * @param dirPath 目录
 	 */
 	public static void cleanDir(String dirPath){
 		File file = new File(dirPath);
@@ -116,6 +118,11 @@ public class FileUtil {
 		}
 	}
 
+	/**
+	 * 打开目录并选中文件
+	 * @param filePath 文件路径
+	 * @return 是否成功
+	 */
 	public static boolean openDir(String filePath) {
 		try {
 			String filePathFormat = filePath.replaceAll("/", "\\\\");
@@ -134,41 +141,46 @@ public class FileUtil {
 	
 	/**
 	 * 文件或目录是否存在
-	 * @param filePath
-	 * @return
+	 * @param filePath 文件路径
+	 * @return 文件或目录是否存在
 	 */
 	public static boolean exists(String filePath) {
 		return new File(filePath).exists();
 	}
 
+	/**
+	 * 获取类路径下的文件路径
+	 * @param name 文件名
+	 * @return 文件路径
+	 */
 	public static String getFilePathInClassPath(String name){
 		try {
 			//获取classpath下的config.json路径
-			return FileUtil.class.getClassLoader().getResource(name).toURI().getPath();
+			return FileUtils.class.getClassLoader().getResource(name).toURI().getPath();
 		} catch (URISyntaxException e) {
 			return null;
 		}
 	}
-}
 
-class PrintStream extends Thread {
-	java.io.InputStream __is = null;
+	private static class PrintStream extends Thread {
+		java.io.InputStream __is = null;
 
-	public PrintStream(java.io.InputStream is) {
-		__is = is;
-	}
+		public PrintStream(java.io.InputStream is) {
+			__is = is;
+		}
 
-	public void run() {
-		try {
-			while (this != null) {
-				int _ch = __is.read();
-				if (_ch != -1)
-					System.out.print((char) _ch);
-				else
-					break;
+		public void run() {
+			try {
+				while (this != null) {
+					int _ch = __is.read();
+					if (_ch != -1)
+						System.out.print((char) _ch);
+					else
+						break;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 }

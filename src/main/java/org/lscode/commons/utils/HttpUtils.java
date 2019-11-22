@@ -30,24 +30,31 @@ import org.apache.http.util.EntityUtils;
  * @author liaol
  * 
  */
-public class HttpUtil {
+public class HttpUtils {
 
 	/**
-	 * 模拟请求
+	 * post请求
 	 * 
 	 * @param url
 	 *            资源地址
 	 * @param map
 	 *            参数列表
 	 *            编码
-	 * @return
-	 * @throws ParseException
-	 * @throws IOException
+	 * @return 请求的资源字符串
+	 * @throws IOException 输入输出异常
 	 */
 	public static String post(String url, Map<String, String> map) throws IOException {
 		return post(url, map, "utf-8");
 	}
 
+	/**
+	 * post请求
+	 * @param url 资源地址
+	 * @param map 参数集合
+	 * @param encoding 编码方式
+	 * @return 请求的资源字符串
+	 * @throws IOException 输入输出异常
+	 */
 	public static String post(String url, Map<String, String> map, String encoding) throws IOException {
 		String body = "";
 
@@ -89,9 +96,9 @@ public class HttpUtil {
 	
 	/**
 	 * 阻塞下载文件
-	 * @param url
-	 * @param destFile
-	 * @return
+	 * @param url 资源地址
+	 * @param destFile 存储的目标文件路径
+	 * @return 响应状态码
 	 */
 	public static int download(String url, String destFile) {
 		CloseableHttpClient client = HttpClients.createDefault();
