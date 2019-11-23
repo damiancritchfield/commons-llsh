@@ -13,6 +13,8 @@ notifications:
 branches:
   only:
     - master
+install:
+  - echo Skipping install step
 script:
   - mvn clean package -Dmaven.test.skip=true -Dgpg.skip=true
 before_deploy:
