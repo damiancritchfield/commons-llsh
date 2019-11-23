@@ -16,7 +16,7 @@ branches:
 before_install:
   - export BUILD_NAME=deploy-$TRAVIS_BRANCH-$(date -u "+%Y%m%d%H%M%S")-$TRAVIS_BUILD_NUMBER
 script:
-  - mvn clean package -Dmaven.test.skip=true
+  - mvn clean package -Dmaven.test.skip=true -Dgpg.skip=true
 before_deploy:
   # Set up git user name and tag this commit
   - git config --local user.name "damiancritchfield"
