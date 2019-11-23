@@ -29,4 +29,6 @@ deploy:
   file: target/lscode-commons-utils-1.1.jar
   on:
     repo: damiancritchfield/lscode-commons-utils
+    tags: true
   skip_cleanup: true
+
