@@ -21,7 +21,7 @@ deploy:
   provider: releases
   api_key:
     secure: xZwDHtNCPGM1TJQjEzAvQxwn4VsdBUa2zMwSQf2PWnxa9HI7Amd6gwxCuIlpmGBXPFsQ3yA/s6l2NlMVwR/qP8KgqcLAOcWnsglVj28M8T0FeiZiTQsGdPHSndlsoA6w2HuhgwKuM48PUYMlUjqiYoCniu8nrlPZXSxDLx1PMHUmWIoNOIsxd+l88DcHeMfU7WK/lY5VouDBvKG+q0L0lVWz6QehwK2/zBoPCOn8jWp134XlMznqHR/jE6C4NDuf6/EXvCPgZrQWFRMjb+vybbFp3rwogi/1O12ZbaGHpbj4UcNwcCIl/NnQgSJyddlNRSbl1OgoIA3XllB9F65dKVgfCD44e2BuUcUViiLEKXuSzCegUWH59z2Q7/PFKDMbgAtEyRUA9vq3577HY/+PKiplrprjzI5+s/93QcI+2lJvjWGSRPjmqb+aMBX1XmlsP/lhpY3ZOavjyy2SeFXy9Rhl2mBQvci3lK8aFfHEt7S7gFGMY+/AxusRvddpeuANgSWwu9HsbzCxQdliIY7vaZjUJ4vwmwNKu9IbIfcLl6T2+Li7CcWOT6pZ1fbcAEUx6geYNtC4TwMBHHY8oIDZmsZgymjgWvKCCKxCZQmjn5Ttc/XhJVlB0Q17zqV92dETDHBILCGjkpz+DJSsKUnnGdqfn4ood+Nl1b4Jk0UhvdQ=
-  file: target/lscode-commons-utils-*.jar
+  file: target/*.jar
   on:
     repo: damiancritchfield/lscode-commons-utils
     tags: true
