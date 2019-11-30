@@ -9,7 +9,7 @@ import com.google.zxing.common.BitMatrix;
 
 /**
  * 二维码位图矩阵工具
- * 2017年6月22日上午11:01:59
+ * v1.2
  */
 public final class BitMatrixUtils {
 
