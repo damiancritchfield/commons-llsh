@@ -5,3 +5,5 @@ target/
 .project
 velocity.log
 *.iml
+deploy/pubring.gpg
+deploy/secring.gpg
