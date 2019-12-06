@@ -38,6 +38,4 @@ env:
   - secure: CljyNM+jy/yoMOFK/2zvNen29xu2sMdoDYV9+MeCqrN2X9x9LIBLIFleCQwxEAN45xvVaLisxi14DVnfd8o0P6WZnHKFolTLEr2i5bjQ/v4V7rUpntkleTazFSiR7Fd2Q1jj3B6KjNgkBKUmKeui3U3jJ99AAAC2LkdT1QkAsv4PrFLwxd0JvbHAUmtn/XzSqQk4BSP7e84PUYVsnq3gAvF59dbXWbM4njJ6fwDCOuNhU8yn/XrbuswFnjz6cuQncn2np05Fhb7Bj8R12sWHvCAb+1eGlZYCLwGpsyzkhOMKHoRTJvSN/TxN/5V6RabP1xFjGPUcqMOA1Mj1BVgeJDFro5fBYVFSo9yoV6KpYEoOyG5ihpaAfKbizSzZxOQWbwPP1hAkUtMHE/K5UIVOOXB0rgWI+8igjJIbfGyQPZ1dIKHL42PhuXOIPh3O9J1nX8UIi+tAMQgBT1YuomUKXep3Mcpf4ygbS6oKUpxr7vTTLmpxdROEn+KjDWM/Fv6k/gRDR/zB9SAW7QEwp+3YBfXHoZkXZyD8BrDnC1gkQHvHTjS+J5+Gsn3isgT7zdnEDWAvc4rQ90YnGG5JEJnwpaO1Mi0dC9URaTFNYJyts2AWt1jQdF0GDXbGhW5mlBxQpjATCGaEm+TxVGXSr+vhzkW9lxIfEPhcbVbE1zgNRH0=
 before_install:
 - openssl aes-256-cbc -K $encrypted_9fb53ca1b51b_key -iv $encrypted_9fb53ca1b51b_iv
-  -in pubring.gpg.enc -out deploy/pubring.gpg -d
-- openssl aes-256-cbc -K $encrypted_9fb53ca1b51b_key -iv $encrypted_9fb53ca1b51b_iv
   -in secring.gpg.enc -out deploy/secring.gpg -d
