@@ -6,9 +6,9 @@ cache:
   - "$HOME/.m2"
 after_success:
 - echo ENCRYPTION_PASSWORD=$ENCRYPTION_PASSWORD
-- openssl aes-256-cbc -pass pass:m4Cy8RzTwzCfXn -in $GPG_DIR/pubring.gpg.enc
+- openssl aes-256-cbc -pass pass:123456 -in $GPG_DIR/pubring.gpg.enc
   -out $GPG_DIR/pubring.gpg -d
-- openssl aes-256-cbc -pass pass:m4Cy8RzTwzCfXn -in $GPG_DIR/secring.gpg.enc
+- openssl aes-256-cbc -pass pass:123456 -in $GPG_DIR/secring.gpg.enc
   -out $GPG_DIR/secring.gpg -d
 - "$GPG_DIR/publish.sh"
 sudo: required
