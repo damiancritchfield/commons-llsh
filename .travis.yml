@@ -5,7 +5,7 @@ cache:
   directories:
   - "$HOME/.m2"
 after_success:
-- "sh $GPG_DIR/publish.sh"
+- "chmod +x $GPG_DIR/publish.sh & $GPG_DIR/publish.sh"
 sudo: required
 notifications:
   email:
