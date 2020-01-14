@@ -92,12 +92,20 @@
     <profile>
       <id>ossrh</id>
       <properties>
-        <gpg.executable>gpg</gpg.executable>
+<!--        <gpg.executable>gpg</gpg.executable>
         <gpg.keyname>${env.GPG_KEYNAME}</gpg.keyname>
         <gpg.passphrase>${env.GPG_PASSPHRASE}</gpg.passphrase>
         <gpg.defaultKeyring>false</gpg.defaultKeyring>
         <gpg.publicKeyring>${env.GPG_DIR}/pubring.gpg</gpg.publicKeyring>
-        <gpg.secretKeyring>${env.GPG_DIR}/secring.gpg</gpg.secretKeyring>
+        <gpg.secretKeyring>${env.GPG_DIR}/secring.gpg</gpg.secretKeyring>-->
+
+        <gpg.executable>gpg</gpg.executable>
+        <gpg.keyname>D43E9DB822E36B9A0733B3CB49E1CD6A1F53FBF4</gpg.keyname>
+        <gpg.passphrase>FGfpggRkq6CuAT</gpg.passphrase>
+        <gpg.defaultKeyring>false</gpg.defaultKeyring>
+<!--        <gpg.publicKeyring>F:\private\projects\java\lscode-commons-utils\deploy\pubring.gpg</gpg.publicKeyring>
+        <gpg.secretKeyring>F:\private\projects\java\lscode-commons-utils\deploy\secring.gpg</gpg.secretKeyring>-->
+
       </properties>
       <activation>
         <property>
@@ -110,7 +118,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
-            <version>1.5</version>
+            <version>1.6</version>
             <executions>
               <execution>
                 <id>sign-artifacts</id>
@@ -223,8 +231,8 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
+          <source>8</source>
+          <target>8</target>
         </configuration>
       </plugin>
       <!--生产源码文件插件-->
@@ -254,20 +262,6 @@
             <phase>package</phase>
             <goals>
               <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <!--gpg加密插件-->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-gpg-plugin</artifactId>
-        <version>1.5</version>
-        <executions>
-          <execution>
-            <phase>verify</phase>
-            <goals>
-              <goal>sign</goal>
             </goals>
           </execution>
         </executions>
