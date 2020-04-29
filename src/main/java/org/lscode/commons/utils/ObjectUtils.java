@@ -168,7 +168,7 @@ public class ObjectUtils {
 	 * @param fieldName 属性名
 	 * @return 属性值
 	 */
-	public Object getField(Object object, String fieldName) {
+	public static Object getField(Object object, String fieldName) {
 		try {
 			Field field = object.getClass().getDeclaredField(fieldName);
 			field.setAccessible(true);

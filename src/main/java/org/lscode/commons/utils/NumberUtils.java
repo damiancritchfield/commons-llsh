@@ -98,4 +98,17 @@ public class NumberUtils {
 	public static BigDecimal decimalRound(BigDecimal number, Integer decimal) {
 		return number.setScale(decimal, BigDecimal.ROUND_HALF_UP);
 	}
+
+	/**
+	 * 两个数相加，如果任意一个数为null，直接返回a
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+	public static BigDecimal add(BigDecimal a, BigDecimal b) {
+		if(a == null || b == null) {
+			return a;
+		}
+		return a.add(b);
+	}
 }
