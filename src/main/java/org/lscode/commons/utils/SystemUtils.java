@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
 
-public class WindowsUtils {
+public class SystemUtils {
 
 	/**
 	 * 执行外部命令，等待外部名字执行完毕再返回
@@ -24,17 +24,13 @@ public class WindowsUtils {
 			builder.redirectErrorStream(true);
 			Process p = builder.start();
 
-			// 1. start
-			BufferedReader buf = null; // 保存ffmpeg的输出结果流
-			String line = null;
 			// read the standard output
+			BufferedReader buf = new BufferedReader(new InputStreamReader(p.getInputStream()));
 
-			buf = new BufferedReader(new InputStreamReader(p.getInputStream()));
-
-			StringBuffer sb = new StringBuffer();
+			StringBuilder sb = new StringBuilder();
+			String line;
 			while ((line = buf.readLine()) != null) {
 				sb.append(line);
-				continue;
 			}
 			p.waitFor();//这里线程阻塞，将等待外部转换进程运行成功运行结束后，才往下执行
 			return sb.toString();

@@ -37,7 +37,7 @@ public class PhantomjsUtils {
 		String fileName = PHANTOMJS_WORKSPACE + "/" + UUID.randomUUID() + ".pdf";
 		command.add(fileName);
 		
-		String res = WindowsUtils.cmdWaitFor(command);
+		String res = SystemUtils.cmdWaitFor(command);
 		
 		System.out.println(res);
 		

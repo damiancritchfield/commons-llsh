@@ -18,7 +18,7 @@ public class FfmpegUtils {
 		command.add("-i");
 		command.add(filepath);
 		
-		return WindowsUtils.cmdWaitFor(command);
+		return SystemUtils.cmdWaitFor(command);
 	}
 	
 	/**
