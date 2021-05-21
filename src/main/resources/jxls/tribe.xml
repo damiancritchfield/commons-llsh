@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<workbook>
+    <worksheet name="Sheet1">
+        <section startRow="0" endRow="0"/>
+        <loop startRow="1" endRow="1" items="tribeMembers" var="tribeMember" varType="org.lscode.commons.model.TribeMember">
+            <section startRow="1" endRow="1">
+                <mapping row="1" col="0">tribeMember.uid</mapping>
+                <mapping row="1" col="1">tribeMember.name</mapping>
+                <mapping row="1" col="3">tribeMember.coins</mapping>
+                <mapping row="1" col="4">tribeMember.rank</mapping>
+                <mapping row="1" col="6">tribeMember.title</mapping>
+                <mapping row="1" col="7">tribeMember.leaderUid</mapping>
+                <mapping row="1" col="8">tribeMember.leaderName</mapping>
+
+            </section>
+            <loopbreakcondition>
+                <rowcheck offset="0">
+                    <cellcheck offset="0">Employee Payment Totals:</cellcheck>
+                </rowcheck>
+            </loopbreakcondition>
+        </loop>
+    </worksheet>
+</workbook>

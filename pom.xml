@@ -165,7 +165,8 @@
       <version>1.7</version>
     </dependency>
 
-    <dependency>
+    <!--因为引入jxls包，根据jxls版本兼容，不再使用此版本-->
+<!--    <dependency>
       <groupId>org.apache.poi</groupId>
       <artifactId>poi</artifactId>
       <version>3.16</version>
@@ -174,7 +175,7 @@
       <groupId>org.apache.poi</groupId>
       <artifactId>poi-ooxml</artifactId>
       <version>3.16</version>
-    </dependency>
+    </dependency>-->
 
     <dependency>
       <groupId>org.apache.httpcomponents</groupId>
@@ -227,6 +228,48 @@
       <groupId>org.eclipse.paho</groupId>
       <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
       <version>1.2.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jxls</groupId>
+      <artifactId>jxls-reader</artifactId>
+      <version>2.0.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jxls</groupId>
+      <artifactId>jxls</artifactId>
+      <version>2.10.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jxls</groupId>
+      <artifactId>jxls-poi</artifactId>
+      <version>2.10.0</version>
+    </dependency>
+    <!--    <dependency>
+          <groupId>org.jxls</groupId>
+          <artifactId>jxls-jexcel</artifactId>
+          <version>1.0.9</version>
+        </dependency>-->
+    <!--poi start-->
+    <!--
+    根据http://jxls.sourceforge.net/changes.html，jxls v2.9.0应该使用poi 4.1.2
+    参考：https://stackoverflow.com/questions/62425376/java-lang-nosuchmethoderror-org-apache-poi-ss-usermodel-cell-getcelltypei
+    -->
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>4.1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>4.1.2</version>
+    </dependency>
+    <!--poi end-->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-compress</artifactId>
+      <version>1.20</version>
     </dependency>
 
   </dependencies>
