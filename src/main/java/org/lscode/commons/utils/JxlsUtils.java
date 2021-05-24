@@ -1,9 +1,12 @@
 package org.lscode.commons.utils;
 
+import com.google.common.base.Joiner;
+import org.jxls.common.Context;
 import org.jxls.reader.ReaderBuilder;
 import org.jxls.reader.XLSReadStatus;
 import org.jxls.reader.XLSReader;
 import org.jxls.template.SimpleExporter;
+import org.jxls.util.JxlsHelper;
 import org.lscode.commons.model.TribeMember;
 
 import java.io.*;
@@ -11,61 +14,63 @@ import java.util.*;
 
 public class JxlsUtils {
 
-    private static String xml = "F:\\private\\project\\java\\lscode-commons-utils\\src\\main\\resources\\jxls\\tribe.xml";
-    private static String xls = "C:\\Users\\llsh\\Desktop\\tribeMembers.xlsx";
-
-    public static List<TribeMember> readBeans(){
+    public static <T> List<T> simpleRead(String inputXmlPath, String inputXlsPath, String beanKey){
         try {
-            InputStream inputXML = new BufferedInputStream(new FileInputStream(xml));
+            InputStream inputXML = new BufferedInputStream(new FileInputStream(inputXmlPath));
             XLSReader mainReader = ReaderBuilder.buildFromXML(inputXML);
-            InputStream inputXLS = new BufferedInputStream(new FileInputStream(xls));
+            InputStream inputXLS = new BufferedInputStream(new FileInputStream(inputXlsPath));
 
-            List tribeMembers = new ArrayList();
-            Map beans = new HashMap();
-            beans.put("tribeMembers", tribeMembers);
-//            beans.put("tribeMember", tribeMember);
-            XLSReadStatus readStatus = mainReader.read(inputXLS, beans);
-            return tribeMembers;
+            List<T> beans = new ArrayList<>();
+            Map<String, Object> beanMap = new HashMap<>();
+            beanMap.put(beanKey, beans);
+            XLSReadStatus readStatus = mainReader.read(inputXLS, beanMap);
+            if(!readStatus.isStatusOK()){
+                System.out.println("readStatus error");
+            }
+            return beans;
         } catch (Exception e){
             e.printStackTrace();
         }
         return null;
     }
 
-    public static void export(List<TribeMember> tribeMembers){
-        try(OutputStream os1 = new FileOutputStream("target/simple_export_output1.xls")) {
-
-            List<String> headers = Arrays.asList("uid", "msg");
+    public static void simpleExport(String outPutPath, List<?> objects, List<String> headers, List<String> properties){
+        try(OutputStream os = new FileOutputStream(outPutPath)) {
             SimpleExporter exporter = new SimpleExporter();
-            exporter.gridExport(headers, tribeMembers, "uid, msg", os1);
-
-            // now let's show how to register custom template
-//            try (InputStream is = JxlsUtils.class.getResourceAsStream("template")) {
-//                try (OutputStream os2 = new FileOutputStream("target/simple_export_output2.xlsx")) {
-//                    exporter.registerGridTemplate(is);
-//                    headers = Arrays.asList("Name", "Payment", "Birth Date");
-//                    exporter.gridExport(headers, tribeMembers, "uid, msg", os2);
-//                }
-//            }
-        } catch (FileNotFoundException e) {
+            String propertiesStr = Joiner.on(",").join(properties);
+            exporter.gridExport(headers, objects, propertiesStr, os);
+        } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void exportByTemplate(Context context, String templatePath, String outPutPath){
+        try(InputStream is = new FileInputStream(templatePath)) {
+            try (OutputStream os = new FileOutputStream(outPutPath)) {
+                JxlsHelper.getInstance().processTemplate(is, os, context);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public static void main(String[] args) throws UnsupportedEncodingException {
-        List<TribeMember> tribeMembers = readBeans();
+        String xml = "F:\\private\\project\\java\\lscode-commons-utils\\src\\main\\resources\\jxls\\tribe.xml";
+        String xls = "C:\\Users\\llsh\\Desktop\\tribeMembers.xlsx";
+        List<TribeMember> tribeMembers = simpleRead(xml, xls, "tribeMembers");
 
+        assert tribeMembers != null;
         for (TribeMember tribeMember : tribeMembers) {
             String msg = RegionTextUtils.getRegionTextLanguage("tribe.msg.award.a", "ar", tribeMember.getName());
-            System.out.println(msg);
             tribeMember.setMsg(msg);
-            if(msg == null){
-                System.out.println(msg);
-            }
         }
-        export(tribeMembers);
+//        simpleExport("F:\\tmp\\a.xls", tribeMembers, Arrays.asList("uid", "msg"), Arrays.asList("uid", "msg"));
+
+        Context context = new Context();
+        context.putVar("tribeMembers", tribeMembers);
+        exportByTemplate(context,
+                "F:\\private\\project\\java\\lscode-commons-utils\\src\\main\\resources\\jxls\\template.xlsx",
+                "F:\\tmp\\a.xls");
     }
 
 }
